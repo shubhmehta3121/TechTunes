@@ -17,7 +17,7 @@ export default defineConfig(({ mode }) => {
         '@': '/src', // Alias for the 'src' folder
       },
     },
-    root: './clerk-javascript',
+    root: '.',
     base: '/',
     define: {
       // Stringify environment variables
