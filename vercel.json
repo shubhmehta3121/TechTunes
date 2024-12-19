@@ -1,5 +1,5 @@
 {
-  "buildCommand": "npm run build",
+  "buildCommand": "cd clerk-javascript && npm install && npm run build",
   "outputDirectory": "clerk-javascript/dist", 
   "framework": "vite",
   "functions": {
