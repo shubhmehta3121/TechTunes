@@ -12,6 +12,12 @@ export default defineConfig(({ mode }) => {
       assetsDir: 'assets',
       target: 'esnext',
     },
+    resolve: {
+      alias: {
+        '@': '/src', // Alias for the 'src' folder
+      },
+    },
+    root: './clerk-javascript',
     base: '/',
     define: {
       // Stringify environment variables
