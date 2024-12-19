@@ -1,6 +1,6 @@
 import './style.css';
 import './about-us.css';
-import { Clerk } from "@clerk/clerk-js";
+import Clerk  from "@clerk/clerk-js";
 import aboutUsContent from './about-us.txt?raw';
 
 // Initialize variables
