@@ -1,0 +1,17 @@
+{
+  "name": "techtunes",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@clerk/clerk-js": "^4.68.1"
+  },
+  "devDependencies": {
+    "vite": "^5.0.8"
+  }
+}

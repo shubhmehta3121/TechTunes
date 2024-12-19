@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign In</title>
+    <script src="https://clerk.browser.accounts.dev/script.js"></script>
+    <style>
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="clerk-sign-in"></div>
+    </div>
+
+    <script>
+        window.addEventListener('load', function () {
+            const clerk = window.Clerk({
+                publishableKey: 'your_publishable_key' // Replace with your Clerk publishable key
+            });
+            
+            clerk.mountSignIn(document.getElementById('clerk-sign-in'));
+        });
+    </script>
+</body>
+</html> 

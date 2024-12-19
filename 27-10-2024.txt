@@ -1,0 +1,124 @@
+has anyone made the reading music notes project
+understand ameb and look for ameb data specific
+what is the easiest thing I can build to put a customer on it
+outcoach has one big product, they will add product line outcoach ai for teachaers and students
+get people signed up and paying for the product
+point is having a fully workable solution
+customized to our problem rather than generalized gpt online
+if we have a working prototype, we can ask them for feedback
+saving history of chat, using that to build profile
+more and more customized to the customer
+as far as possible from being generic
+as specific you are, more the chance of being successful
+it's all about speed
+academics school side are easier to sell to parents
+one stop solution
+it should be a support platform
+
+I need to think about - from an architecture perspective, how can I scale it
+I start with claude or gpt, chain of thought and build a rag
+Think from customer pov, what does matter to them
+
+Start with music
+go to ameb syllabus, ameb is certification for music teachers
+see all the things, what is required to get the certifications
+
+ping on slack with updates
+
+
+people are trying to learn music theory
+trying to create an ai platfrom
+
+there are 3 levels
+level 1 - most music theory is for piano / bulk is there for piano
+problem number 1 - anyone trying to learn from any board, fundamentally curriculum should be same
+ameb is very hated
+first step is purely public knowledge
+next layer is readint the music sheets
+thrid level, preparing for a specific test, help me with that, then go to music certifications
+
+clerk can be use for user management - no code to plug it in
+ask them a bunch of questions - basically get their background / profile
+next step -  give them sample questions to judge their level
+What is the right answer and what is the wrong one
+Ask their instrument in their profile
+
+online resources are very small
+practice questions are from previous years
+LLM is to generate questions
+LLM is to give feedback
+LLM is to generate human input part
+
+Store this in memory for each user
+Complex part is keeping the appropriate context for the model to know each user
+Preserve the knowledge as vector embeddings
+
+ 
+
+cursor rules
+cursor directory for rule giving
+
+
+vercel for website sharing / deploying and share the preview link
+
+frontend cursor
+authentication clerk
+
+for database - supabase
+postgres in cloud
+quick and easy to use
+
+free for a long period of time
+
+2 choices - see if I can deploy on vercel using cursor and supabase for storing the json data
+
+v0 is best to give quick frontend. it is by vercel
+
+share with people to see if this is correct.
+Put 10 questions. Change from scracth button and remove it. Share the preview link.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
