@@ -16,7 +16,7 @@ CORS(app, resources={
     r"/api/assessment/*": {
         "origins": [
             "http://localhost:5173",
-            "https://techtunes-*.vercel.app"  # Wildcard for all Vercel preview deployments
+            "https://tech-tunes-*.vercel.app"  # Wildcard for all Vercel preview deployments
         ],
         "methods": ["GET", "POST", "OPTIONS"],
         "allow_headers": ["Content-Type", "Accept"],

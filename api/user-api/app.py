@@ -15,7 +15,7 @@ CORS(app, resources={
     r"/api/user/*": {
         "origins": [
             "http://localhost:5173",
-            "https://techtunes-*.vercel.app"
+            "https://tech-tunes-*.vercel.app"
         ],
         "methods": ["GET", "POST", "OPTIONS"],
         "allow_headers": ["Content-Type", "Accept"],
