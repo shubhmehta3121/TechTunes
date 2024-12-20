@@ -1,0 +1,21 @@
+Improvements and Optimizations To-Do:
+
+1. Dependencies Optimization
+   - Currently, some dependencies (like openai) are added to all microservices even though they're only used in specific services
+   - Need to review and optimize requirements.txt for each microservice to include only the necessary dependencies
+   - Specific cases to address:
+     * openai package is only needed in assessment-api
+     * Review other shared dependencies across services
+   
+   Benefits of optimization:
+   - Reduced deployment package size
+   - Faster cold starts
+   - Better adherence to microservice architecture principles
+   - Reduced complexity in each service
+   
+   Steps for future optimization:
+   1. Audit each microservice's actual dependency usage
+   2. Remove unused dependencies from each requirements.txt
+   3. Test each service independently after optimization
+   4. Ensure Vercel deployment settings are correctly configured for each service
+   5. Document any shared dependencies that are actually needed across services 

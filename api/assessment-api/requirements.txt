@@ -9,3 +9,4 @@ typing-extensions>=4.8.0
 distro
 httpx
 anyio==3.7.1
+fastapi
