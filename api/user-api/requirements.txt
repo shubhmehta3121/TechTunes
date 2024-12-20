@@ -5,3 +5,4 @@ werkzeug==3.0.0
 pathlib
 typing-extensions>=4.8.0
 distro
+httpx
