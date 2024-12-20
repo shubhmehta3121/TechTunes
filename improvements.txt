@@ -19,3 +19,90 @@ Improvements and Optimizations To-Do:
    3. Test each service independently after optimization
    4. Ensure Vercel deployment settings are correctly configured for each service
    5. Document any shared dependencies that are actually needed across services 
+
+2. OpenAI Deployment Solutions
+   - Current Issue: OpenAI package causing ENOENT errors in Vercel deployment
+   - Potential Solutions:
+
+   a) Vercel Configuration Enhancement:
+      - Modify vercel.json to include specific build configurations for each API
+      - Add separate build settings for assessment-api where OpenAI is needed
+      - Configure distinct Python environments for each service
+      - Ensure proper source and destination mappings for each API endpoint
+      - Consider adding build commands specific to each API's requirements
+
+   b) Project Structure Options:
+      - Consider splitting into separate repositories for complete dependency isolation
+      - Alternative: Use monorepo structure with clear service boundaries
+      - Evaluate using Vercel's monorepo support features
+
+   c) Build and Environment Setup:
+      - Review and optimize build process for each API
+      - Ensure OpenAI API key is only set for assessment-api
+      - Consider implementing proper environment isolation
+      - Review Python runtime settings in Vercel
+
+   Priority Tasks:
+   1. Review current vercel.json configuration
+   2. Analyze build logs for specific failure points
+   3. Test deployment with OpenAI only in assessment-api
+   4. Document successful deployment configuration for future reference
+
+3. Proposed vercel.json Modifications
+   Current Structure:
+   - Handles frontend build (clerk-javascript)
+   - Contains API route rewrites
+   - Uses Vite framework setting
+
+   Proposed Changes:
+   ```json
+   {
+     "buildCommand": "cd clerk-javascript && npm install && npm run build",
+     "outputDirectory": "clerk-javascript/dist",
+     "framework": "vite",
+     "builds": [
+       {
+         "src": "api/user-api/*.py",
+         "use": "@vercel/python",
+         "config": {
+           "runtime": "python3.9",
+           "requirementsPath": "api/user-api/requirements.txt"
+         }
+       },
+       {
+         "src": "api/progress-api/*.py",
+         "use": "@vercel/python",
+         "config": {
+           "runtime": "python3.9",
+           "requirementsPath": "api/progress-api/requirements.txt"
+         }
+       },
+       {
+         "src": "api/assessment-api/*.py",
+         "use": "@vercel/python",
+         "config": {
+           "runtime": "python3.9",
+           "requirementsPath": "api/assessment-api/requirements.txt",
+           "maxLambdaSize": "15mb"  // Increased for OpenAI package
+         }
+       }
+     ],
+     "rewrites": [
+       // Keep existing rewrites
+     ]
+   }
+   ```
+
+   Key Changes Explained:
+   1. Added separate build configurations for each Python API
+   2. Specified distinct requirements.txt paths for each service
+   3. Increased lambda size limit for assessment-api due to OpenAI
+   4. Maintained existing frontend build and rewrite rules
+   5. Set specific Python runtime version
+
+   Implementation Steps:
+   1. Backup current vercel.json
+   2. Test changes in a development branch first
+   3. Monitor build logs for each service separately
+   4. Verify OpenAI package installation only in assessment-api
+   5. Ensure frontend build still works as expected

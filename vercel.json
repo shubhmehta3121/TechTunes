@@ -2,6 +2,33 @@
   "buildCommand": "cd clerk-javascript && npm install && npm run build",
   "outputDirectory": "clerk-javascript/dist", 
   "framework": "vite",
+  "builds": [
+    {
+      "src": "api/user-api/*.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.9",
+        "requirementsPath": "api/user-api/requirements.txt"
+      }
+    },
+    {
+      "src": "api/progress-api/*.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.9",
+        "requirementsPath": "api/progress-api/requirements.txt"
+      }
+    },
+    {
+      "src": "api/assessment-api/*.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.9",
+        "requirementsPath": "api/assessment-api/requirements.txt",
+        "maxLambdaSize": "15mb"
+      }
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/user/(.*)",
