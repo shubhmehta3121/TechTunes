@@ -15,6 +15,20 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       port: 3000,
+      proxy: {
+        '/api/user': {
+          target: 'http://localhost:5001',
+          changeOrigin: true
+        },
+        '/api/assessment': {
+          target: 'http://localhost:5002',
+          changeOrigin: true
+        },
+        '/api/progress': {
+          target: 'http://localhost:5003',
+          changeOrigin: true
+        }
+      }
     },
     resolve: {
       alias: {

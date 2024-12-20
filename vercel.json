@@ -4,12 +4,20 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1" 
+      "source": "/api/user/(.*)",
+      "destination": "/api/user-api/$1"
+    },
+    {
+      "source": "/api/assessment/(.*)",
+      "destination": "/api/assessment-api/$1"
+    },
+    {
+      "source": "/api/progress/(.*)",
+      "destination": "/api/progress-api/$1"
     },
     {
       "source": "/(.*)",
-      "destination": "/index.html" 
+      "destination": "/index.html"
     }
   ]
 }

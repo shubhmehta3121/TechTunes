@@ -7,9 +7,14 @@ import aboutUsContent from './about-us.txt?raw';
 let clerk;
 let isAssessmentGenerating = false;
 
-const API_URL = import.meta.env.PROD 
+const API_BASE = import.meta.env.PROD 
   ? `${window.location.protocol}//${window.location.host}/api`
   : 'http://localhost:5000/api';
+
+// Add service-specific URLs
+const USER_API = `${API_BASE}/user`;
+const ASSESSMENT_API = `${API_BASE}/assessment`;
+const PROGRESS_API = `${API_BASE}/progress`;
 
 // Copy all functions from v1/main.js
 function renderWelcomePage() {
@@ -149,7 +154,7 @@ function renderHomePage() {
   if (viewAssessmentBtn) {
     viewAssessmentBtn.addEventListener('click', async () => {
       try {
-        const response = await fetch(`${API_URL}/get-latest-assessment`, {
+        const response = await fetch(`${API_BASE}/get-latest-assessment`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -295,7 +300,7 @@ function renderGoalPage() {
     if (selectedGoal) {
       // Save user's goal
       try {
-        const response = await fetch('http://localhost:5000/api/save-goal', {
+        const response = await fetch(`${USER_API}/save-goal`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -385,7 +390,7 @@ function renderProficiencyPage(selectedGoal) {
   continueBtn.addEventListener('click', async () => {
     if (selectedLevel) {
       try {
-        const response = await fetch('http://localhost:5000/api/save-proficiency', {
+        const response = await fetch(`${USER_API}/save-proficiency`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -545,7 +550,7 @@ function renderQuestionCountPage(selectedGoal, proficiencyLevel) {
     const maxRetries = 2;
 
     function attemptAssessmentGeneration() {
-      fetch('http://localhost:5000/api/save-learning-path', {
+      fetch(`${USER_API}/save-learning-path`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -566,7 +571,7 @@ function renderQuestionCountPage(selectedGoal, proficiencyLevel) {
             throw new Error(`Failed to save learning path: ${text}`);
           });
         }
-        return fetch('http://localhost:5000/api/generate-assessment', {
+        return fetch(`${ASSESSMENT_API}/generate`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -735,7 +740,7 @@ function renderAssessmentIntroPage(selectedGoal) {
 // Add this helper function for API calls
 async function makeAPICall(endpoint, method = 'POST', data = null) {
   try {
-    const response = await fetch(`${API_URL}/${endpoint}`, {
+    const response = await fetch(`${API_BASE}/${endpoint}`, {
       method,
       headers: {
         'Content-Type': 'application/json',
@@ -811,7 +816,7 @@ async function finishAssessment(state) {
   const score = (results.correctAnswers / totalQuestions) * 100;
 
   try {
-    const response = await fetch('http://localhost:5000/api/complete-assessment', {
+    const response = await fetch(`${PROGRESS_API}/complete-assessment`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

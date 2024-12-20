@@ -13,7 +13,6 @@ CORS(app, resources={
     r"/api/*": {
         "origins": [
             "http://localhost:5173",
-            "https://techtunes-cv73lv19z-shubh-mehtas-projects.vercel.app",
             "https://techtunes-*.vercel.app"  # Wildcard for all Vercel preview deployments
         ],
         "methods": ["GET", "POST", "OPTIONS"],
