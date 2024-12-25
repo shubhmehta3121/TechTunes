@@ -1,27 +1,50 @@
 {
-  "version": 2,
   "buildCommand": "cd clerk-javascript && npm install && npm run build",
   "outputDirectory": "clerk-javascript/dist",
-  "routes": [
+  "framework": "vite",
+  "builds": [
     {
-      "src": "/api/user/(.*)",
-      "dest": "/api/user-api/$1"
+      "src": "api/user-api/*.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.9",
+        "requirementsPath": "api/user-api/requirements.txt"
+      }
     },
     {
-      "src": "/api/assessment/(.*)",
-      "dest": "/api/assessment-api/$1"
+      "src": "api/progress-api/*.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.9",
+        "requirementsPath": "api/progress-api/requirements.txt"
+      }
     },
     {
-      "src": "/api/progress/(.*)",
-      "dest": "/api/progress-api/$1"
+      "src": "api/assessment-api/*.py",
+      "use": "@vercel/python",
+      "config": {
+        "runtime": "python3.9",
+        "requirementsPath": "api/assessment-api/requirements.txt",
+        "maxLambdaSize": "15mb"
+      }
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/user/(.*)",
+      "destination": "/api/user-api/$1"
     },
     {
-      "src": "/assets/(.*)",
-      "dest": "/assets/$1"
+      "source": "/api/assessment/(.*)",
+      "destination": "/api/assessment-api/$1"
     },
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/api/progress/(.*)",
+      "destination": "/api/progress-api/$1"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
