@@ -7,7 +7,7 @@
       "src": "api/user-api/*.py",
       "use": "@vercel/python",
       "config": {
-        "runtime": "python3.9",
+        "runtime": "python3.12",
         "requirementsPath": "api/user-api/requirements.txt"
       }
     },
@@ -15,7 +15,7 @@
       "src": "api/progress-api/*.py",
       "use": "@vercel/python",
       "config": {
-        "runtime": "python3.9",
+        "runtime": "python3.12",
         "requirementsPath": "api/progress-api/requirements.txt"
       }
     },
@@ -23,7 +23,7 @@
       "src": "api/assessment-api/*.py",
       "use": "@vercel/python",
       "config": {
-        "runtime": "python3.9",
+        "runtime": "python3.12",
         "requirementsPath": "api/assessment-api/requirements.txt",
         "maxLambdaSize": "15mb"
       }
