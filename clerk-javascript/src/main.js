@@ -8,7 +8,7 @@ let clerk;
 let isAssessmentGenerating = false;
 
 const API_BASE = import.meta.env.PROD 
-  ? `${window.location.protocol}//${window.location.host}/api`
+  ? '/api'
   : 'http://localhost:5000/api';
 
 // Add service-specific URLs
